@@ -40,7 +40,6 @@ document.forms.startGame.onsubmit = function(e) {
 
 	//	dealer.takeAway(cardDeck.selectors, dropout, true);
 	var cols = document.querySelectorAll('.column');
-	limitHeight = dealer.getLimitHeight();
 	for (var i = 0; i < cols.length; i++) {
 		dealer.setSuitedHeight(cols[i], limitHeight);
 	}
