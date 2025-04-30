@@ -12,7 +12,16 @@ function DragEvents() {
 		if (!cardDeck || that.el.children[0] || !dealer.checkStartDrag(t, cardDeck.selectors)){
 			return;
 		}
-
+		// Validate descending order for the dragged sequence
+let draggedCards = Array.from(that.el.children); // Get all dragged cards
+for (let i = 0; i < draggedCards.length - 1; i++) {
+    let currentCard = +draggedCards[i].dataset.card.slice(1);
+    let nextCard = +draggedCards[i + 1].dataset.card.slice(1);
+    if (currentCard !== nextCard + 1) { // Ensure descending order
+        alert("Cards must be in descending order.");
+        return false;
+    }
+}
 		that.shiftX = e.pageX - t.getBoundingClientRect().left;
 		that.shiftY = e.pageY - t.getBoundingClientRect().top;
 		that.el.style.left = e.pageX - that.shiftX + 'px';
@@ -48,6 +57,19 @@ function DragEvents() {
 
 		that.parentNew = that.getDroppable(that.el.children[0], that.parentOld);
 
+// Validate same-suit group movement
+if (that.el.children.length > 1) {
+    let draggedCards = Array.from(that.el.children);
+    for (let i = 0; i < draggedCards.length - 1; i++) {
+        let currentSuit = draggedCards[i].dataset.card[0];
+        let nextSuit = draggedCards[i + 1].dataset.card[0];
+        if (currentSuit !== nextSuit) { // Ensure same suit for the group
+            alert("Groups must be of the same suit.");
+            that.parentOld.appendChild(that.el.children[0]); // Return cards to original position
+            return;
+        }
+    }
+}
 		while (that.el.children[0]) {
 			if (that.parentNew) {
 				that.parentNew.appendChild(that.el.children[0]);
@@ -101,8 +123,11 @@ function DragEvents() {
 		if (!this.container || this.container === source) 
 			return;
 
-		if ( !this.container.children[0] )
-			return this.container;
+		if (!this.container.children[0]) {
+    noOfMoves++;
+    document.getElementById("score").innerHTML = noOfMoves;
+    return this.container;
+}
 
 		var cardNum1 = +target.dataset.card.slice(1); //Returns only a number that can be compared --> Represents target
 		var cardNum2 = +this.container.lastElementChild.dataset.card.slice(1); // Represents last element of new parent
