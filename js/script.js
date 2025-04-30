@@ -76,7 +76,6 @@ document.querySelector('.btn-new').onclick = function(e) {
 	timeKeeper = setInterval(timer.setTime, 1000);
 };
 
-
 document.querySelector('.btn-hint').onclick = function(e) {
 	var allCards = document.querySelectorAll('.column .card.open');
 	var allPlaces = document.querySelectorAll('.column .card.open:last-child');
@@ -91,7 +90,6 @@ document.querySelector('.btn-hint').onclick = function(e) {
 	}
 	dealer.hint(allCards, allPlaces, cardDeck.selectors);
 };
-
 
 document.addEventListener('touchstart', function(e) {
 	if (e.targetTouches[0].target != e.target) return;
@@ -111,15 +109,12 @@ document.addEventListener('mousemove', dragObj.moveDrag);
 document.addEventListener('touchend', dragObj.endDrag);
 document.addEventListener('mouseup', dragObj.endDrag);  
 
-
 highScores = document.querySelector('ol#high-scores');
-
 
 var scoreBoard = 	document.getElementById('scoreBoard');
 document.querySelector('#high-score-btn').onclick = function() {
 	scoreBoard.style.display = 'block';
 }
-
 
 function HighScores() {
 	if(typeof(Storage)!=="undefined"){
@@ -145,7 +140,6 @@ function HighScores() {
 		highScores.style.display = "none";
 	}
 }
-
 
 HighScores();
 
