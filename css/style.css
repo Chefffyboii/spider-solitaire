@@ -594,7 +594,39 @@ ol li:after {
 	
 	
 }
+/* Foundation container */
+.foundation-container {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to fit all piles */
+    gap: 8px; /* Space between the piles */
+    width: 200px; /* Adjust width to fit 8 smaller piles */
+    height: auto;
+}
 
+/* Individual foundation piles */
+.foundation-pile {
+    width: 70px; /* Slightly smaller than cards */
+    height: 100px; /* Slightly smaller than cards */
+    border: 2px dashed #fff; /* Dashed border for empty piles */
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card in foundation */
+.foundation-pile .card {
+    width: 100%; /* Match pile size */
+    height: 100%; /* Match pile size */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none; /* Remove card border */
+}
 
 
 
