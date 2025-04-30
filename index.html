@@ -52,30 +52,37 @@
 		</div>
 
 		<div class="wrapper">
-			<div class="timer">
-				<label>Time</label>
-				<label id="minutes">00</label>:<label id="seconds">00</label>
-			</div>
-			<div class="score">
-				<label>Moves: </label>
-				<label id="score">0</label>
-			</div>
+    <div class="timer">
+        <label>Time</label>
+        <label id="minutes">00</label>:<label id="seconds">00</label>
+    </div>
+    <div class="score">
+        <label>Moves: </label>
+        <label id="score">0</label>
+    </div>
 
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
-			<ul class="column" data-height=""></ul>
+    <!-- Adjust columns to 15 -->
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul>
+    <ul class="column" data-height=""></ul> <!-- New -->
+    <ul class="column" data-height=""></ul> <!-- New -->
+    <ul class="column" data-height=""></ul> <!-- New -->
+    <ul class="column" data-height=""></ul> <!-- New -->
+    <ul class="column" data-height=""></ul> <!-- New -->
 
-			<div class="offside">
-				<ul class="source" id="source"></ul>
-				<ul class="dropout" id="dropout"></ul>
-			</div>
+    <div class="offside">
+        <ul class="source" id="source"></ul>
+        <ul class="dropout" id="dropout"></ul>
+    </div>
+</div>
 		</div>
 
 		<div class="control-panel opaque">
@@ -85,26 +92,22 @@
 		</div>
 
 		<div id="faq" class="faq">
-			<h1>Frequently Asked Questions</h1>
+    <h1>Frequently Asked Questions</h1>
 
-			<h2>Purpose of the game</h2>
-			<p>Remove all 	cards from the playing field in the fewest moves.</p>
+    <h2>Purpose of the game</h2>
+    <p>Remove all cards from the playing field in the fewest moves.</p>
 
-			<h2>Rules of the game</h2>
-			<p>
-				For solitaire, 2 decks of 52 cards are required. Initially, 54 cards are evenly decomposed into 10 columns  and the remaining 50 are added to 5 heaps of 10. In each column, all but the upper ones are closed. You can move cards from a column to a column. Maps are moved according to the following rules:
-			</p>
-			<ol>
-				<li>On an empty space, you can move the top card of any column.</li>
-				<li>The top card of the column can be moved to the next highest card, regardless of its suit and color.</li>
-				<li>A stack of cards of the same suit, lying in order, can be moved as one card.</li>
-			</ol>
-			<p>
-				If the top closed card of any column is released, it automatically opens. As soon as a column appears from the cards of the same suit collected in order, this column is removed into the house. Permitted at any time, when there are no empty columns, take one of the piles stacked on 10 cards and scatter these cards one at a time in each column.
-			</p>
-			<p>
-				There are 3 levels of difficulty. On the first, all cards have the same suit - peaks (each card repeats 8 times); on the second, all cards have two different suits - peaks and hearts. At the last level of difficult	y, you will have to deal with two full decks with 4 suits.
-			</p>
+    <h2>Rules of the game</h2>
+    <p>
+        The game starts with 15 columns of cards. Your goal is to arrange sequences of cards in descending order from King to Ace. Once completed, they will be removed to the foundation piles.
+    </p>
+    <ol>
+        <li>Cards must be in descending order to move.</li>
+        <li>Groups of cards can only be moved if they are of the same suit and in descending order.</li>
+        <li>Any card or sequence can be placed in an empty column.</li>
+        <li>When a sequence is completed (King to Ace of the same suit), it will automatically move to a foundation pile.</li>
+    </ol>
+</div>
 			<div class="faq-close" title="close" onclick="dealer.closeFaq()"></div>
 		</div>
 		<div class="faq-shadow"></div>
