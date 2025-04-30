@@ -27,29 +27,31 @@ function CardDealer() {
 	}
 
 	this.delivery = function(n, opened, animation) {
-		var cols = document.querySelectorAll('.column');
-		var c = 0;
-		
-		for (var i = 0; i< n; i++) {
-			if (opened) {
-				cardDeckEl.lastElementChild.classList.add('open');
-				cardDeckEl.lastElementChild.classList.remove('closed');
-			}
-			
-			animation ?
-				cols[c].animationAppendChild(cardDeckEl.lastElementChild)
-			:	cols[c].appendChild(cardDeckEl.lastElementChild);
+    var cols = document.querySelectorAll('.column'); // Get all 15 columns
+    var c = 0;
 
-			if(++c >= cols.length) 
-				c = 0;	
-		}
-	}
+    for (var i = 0; i < n; i++) {
+        if (opened) {
+            cardDeckEl.lastElementChild.classList.add('open');
+            cardDeckEl.lastElementChild.classList.remove('closed');
+        }
 
+        animation
+            ? cols[c].animationAppendChild(cardDeckEl.lastElementChild)
+            : cols[c].appendChild(cardDeckEl.lastElementChild);
+
+        // Distribute cards across all 15 columns
+        if (++c >= cols.length) {
+            c = 0;
+        }
+    }
+};
 	this.checkEmpty = function (elems) {
 		for (var i = 0; i < elems.length; i++) {
-			if(!elems[i].children[0]) 
-				return true;
-		}
+			if (!elems[i].children[0]) {
+    // Allow any card or sequence to be placed
+    return true;
+}
 	}
 
 	this.checkStartDrag = function(target, selectors) {
@@ -201,13 +203,31 @@ function CardDealer() {
 			}
 		}
 	};
+this.checkCompletedSequence = function(column) {
+    var cards = column.querySelectorAll('.card.open');
+    var isComplete = true;
 
+    // Check if the column has a complete sequence from King to Ace
+    for (var i = 0; i < cards.length - 1; i++) {
+        if (
+            cards[i].getRank() - 1 !== cards[i + 1].getRank() ||
+            cards[i].getSuit() !== cards[i + 1].getSuit()
+        ) {
+            isComplete = false;
+            break;
+        }
+    }
 
+    if (isComplete) {
+        this.moveToFoundation(cards);
+    }
+};
 
-
-
-
-
-
-}
-
+this.moveToFoundation = function(cards) {
+    var foundation = document.querySelector('.foundation .foundation-pile:empty');
+    if (foundation) {
+        cards.forEach(card => {
+            foundation.appendChild(card);
+        });
+    }
+};
