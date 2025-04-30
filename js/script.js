@@ -24,8 +24,8 @@ document.forms.startGame.onsubmit = function(e) {
 	dealer = new CardDealer();
 	dealer.shuffle(cardDeck.getCards());
 	dealer.reUpload(cardDeck.getCards()); 
-	dealer.delivery(44,false,true);	
-	dealer.delivery(10,true,true);
+	dealer.delivery(59, false, true); // First 10 columns
+	dealer.delivery(45, true, true);  // Last 5 columns
 
 	document.querySelector('.control-panel').style.display = 'block';
 	document.querySelector('.timer').style.display = 'block';
@@ -38,16 +38,6 @@ document.forms.startGame.onsubmit = function(e) {
 	return false;
 }
 
-cardDeckEl.onclick = function(e) {
-	if (this.lastElementChild != e.target)
-		return;
-	var empty = dealer.checkEmpty(document.querySelectorAll('.column'));
-	if (empty) {
-		var msg = 'Cannot send cards to empty column';
-		dealer.showMessage(msg,e.pageX-320,e.pageY-80);
-		return;
-	}
-	dealer.delivery(10,true,true);
 	//	dealer.takeAway(cardDeck.selectors, dropout, true);
 	var cols = document.querySelectorAll('.column');
 	limitHeight = dealer.getLimitHeight();
@@ -71,12 +61,16 @@ document.querySelector('.btn-new').onclick = function(e) {
 	}
 	dealer.shuffle(cardDeck.getCards());
 	dealer.reUpload(cardDeck.getCards());
-	dealer.delivery(44,false,true);
-	dealer.delivery(10, true,true);
+	dealer.delivery(59, false, true); // First 10 columns
+	dealer.delivery(45, true, true);  // Last 5 columns
 
 	noOfMoves = 0;
 	var moves = document.getElementById("score");
 	moves.innerHTML = noOfMoves;
+		if (validMove) {
+    noOfMoves++;
+    moves.innerHTML = noOfMoves;
+}
 
 	timer = new TimeCounter();
 	clearInterval(timeKeeper);
