@@ -50,19 +50,44 @@ body {
 	border-radius: 20px;
 }
 
-
-
+/* Wrapper for Columns */
 .wrapper {
-	width: 1000px;
-	margin: -20px auto;
+    display: flex;
+    flex-wrap: nowrap; /* Keeps everything in one row */
+    justify-content: center; /* Centers the columns horizontally */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    width: 100%; /* Ensures the wrapper spans the full width */
+    margin: 0 auto;
 }
 
+/* Columns */
 .column {
-	width: 100px;
-	min-height: 120px;
-	padding-top: 40px;
-	float: left;
-	/*	border: 1px solid #000;*/
+    width: 6%; /* Adjust the width to fit 15 columns */
+    margin: 0 0.5%; /* Add spacing between columns */
+    display: flex;
+    flex-direction: column; /* Cards stack vertically within the column */
+}
+
+/* Cards */
+.card {
+    width: 100%; /* Cards take up the full column width */
+    aspect-ratio: 3 / 4; /* Ensures consistent card proportions */
+    margin-bottom: -10%; /* Slight overlap for stacked appearance */
+    position: relative;
+    cursor: grab; /* Indicates the card is draggable */
+}
+
+.card.open {
+    z-index: 2; /* Ensures open cards are visually on top */
+}
+
+.card.closed {
+    z-index: 1; /* Closed cards are below */
+    background-image: 
+        linear-gradient(45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.30) 60%, rgba(0,0,0,0) 52%),
+        linear-gradient(-45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.25) 60%, rgba(0,0,0,0) 52%);
+    background-size: 13px 17px;
+    background-color: #a83345;
 }
 
 .start-form {
@@ -224,6 +249,27 @@ input[type=radio] {
 	padding: 10px;
 	position: absolute;
 	display: none;
+}
+/* Foundation Piles */
+.foundation-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 200px;
+}
+
+.foundation-pile {
+    width: 70px;
+    height: 100px;
+    border: 2px dashed #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .message {
