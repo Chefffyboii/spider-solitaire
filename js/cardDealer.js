@@ -228,6 +228,7 @@ this.moveToFoundation = function(cards) {
     if (foundation) {
         cards.forEach(card => {
             foundation.appendChild(card);
-        });
-    }
+      	  });
+    	}
 };
+}
