@@ -44,7 +44,6 @@ document.forms.startGame.onsubmit = function(e) {
 	for (var i = 0; i < cols.length; i++) {
 		dealer.setSuitedHeight(cols[i], limitHeight);
 	}
-}
 
 var moves = document.getElementById("score");
 
